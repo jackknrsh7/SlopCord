@@ -1,0 +1,17 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+
+# Claude
+.claude/settings.local.json
+
+# Environment-specific app settings (keep *.example.json)
+appsettings*.json
+!appsettings.example.json
+
+# Environment-specific app config (keep *.example.config)
+app*.config
+!app.example.config

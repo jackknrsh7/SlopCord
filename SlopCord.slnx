@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Shared/">
+    <Project Path="src/Core/Core.csproj" />
+    <Project Path="src/Domain/Domain.csproj" />
+    <Project Path="src/ApiShared/ApiShared.csproj" />
+  </Folder>
+  <Folder Name="/Identity/">
+    <Project Path="src/Identity/IdentityApi/IdentityApi.csproj" />
+    <Project Path="src/Identity/IdentityService/IdentityService.csproj" />
+    <Project Path="src/Identity/IdentityPersistence/IdentityPersistence.csproj" />
+  </Folder>
+  <Folder Name="/StaticPage/">
+    <Project Path="src/StaticPage/StaticPageApi/StaticPageApi.csproj" />
+    <Project Path="src/StaticPage/StaticPageService/StaticPageService.csproj" />
+    <Project Path="src/StaticPage/StaticPagePersistence/StaticPagePersistence.csproj" />
+  </Folder>
+</Solution>
