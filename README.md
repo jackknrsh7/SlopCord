@@ -161,6 +161,34 @@ public class Startup(IConfiguration configuration) : AbstractStartup(configurati
 
 ---
 
+### Configuration & Secrets
+
+> **Never commit `appsettings.json` or any environment-specific config file to source control.** These files can contain database connection strings, JWT signing keys, API keys, and other credentials. Exposing them — even briefly — in a public or shared repository is a serious security risk that cannot be fully undone by deleting the file later, since git history retains every version ever committed.
+
+Each API project contains two configuration files:
+
+| File | Committed? | Purpose |
+|---|---|---|
+| `appsettings.json` | **No** — gitignored | Your real local/production config, including any secrets |
+| `appsettings.example.json` | **Yes** | A safe template that documents every key the app expects, with placeholder values in place of real secrets |
+
+**Setup for a new developer or deployment environment:**
+
+1. Copy `appsettings.example.json` to `appsettings.json` in the same directory.
+2. Replace every `YOUR_*_HERE` placeholder with the real value for that environment.
+3. Never add `appsettings.json` to git — the `.gitignore` blocks it, but stay conscious of this.
+
+The `.gitignore` in this repo enforces the pattern broadly:
+
+```gitignore
+appsettings*.json        # ignores appsettings.json, appsettings.Development.json, etc.
+!appsettings.example.json  # explicitly allows the example template
+```
+
+If you need environment-specific overrides (e.g. `appsettings.Development.json`), those are also gitignored by the same rule. Use environment variables, a secrets manager (e.g. Azure Key Vault, AWS Secrets Manager), or the [.NET Secret Manager](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) tool for local development instead of committing environment files.
+
+---
+
 ### NuGet Package Notes
 
 | Package | Version | Reason for pin |
